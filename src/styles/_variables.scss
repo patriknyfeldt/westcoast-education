@@ -1,0 +1,48 @@
+@use './sizing' as *;
+
+// spacing
+
+$px4: rem-calc(4px);
+$px8: rem-calc(8px);
+$px10: rem-calc(10px);
+$px12: rem-calc(12px);
+$px16: rem-calc(16px);
+$px20: rem-calc(20px);
+$px24: rem-calc(24px);
+$px32: rem-calc(32px);
+$px40: rem-calc(40px);
+$px48: rem-calc(48px);
+$px56: rem-calc(56px);
+$px64: rem-calc(64px);
+$px72: rem-calc(72px);
+$px80: rem-calc(80px);
+
+$default-spacing: $px20;
+
+// font-sizes
+
+$font-size-xs: $px12;
+$font-size-s: $px16;
+$font-size-m: $px20;
+$font-size-l: $px24;
+$font-size-xl: $px40;
+
+// colors
+
+$primary-bg-color: #FFFBEB;
+$secondary-bg-color:#495579;
+$tertiary-bg-color: #263159;
+
+$primary-text-color: #131313;
+$secondary-text-color: #FAFAFA;
+
+// breakpoints
+
+$break-tablet: 768px;
+$break-laptop: 1024px;
+$break-desktop: 1300px;
+
+//fonts
+
+$main-font: 'Roboto', sans-serif;
+$title-font: 'Segoe UI', sans-serif;
