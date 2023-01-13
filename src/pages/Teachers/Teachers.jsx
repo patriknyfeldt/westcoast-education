@@ -10,7 +10,7 @@ const Teachers = () => {
 
     const [teachers, setTeachers] = useState([]);
   
-    const { data, error } = useFetchData('http://localhost:3010/teachers');
+    const { data, error } = useFetchData({url:'http://localhost:3010/teachers'});
   
     useEffect(() => {
       if(data) {
