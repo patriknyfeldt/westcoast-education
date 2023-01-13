@@ -1,34 +1,34 @@
 import './Teachers.scss';
 
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
+import ListContext from '../../store/list-context';
 
-import useFetchData from '../../Hooks/use-fetch-data'
+import useFetchData from '../../hooks/use-fetch-data'
 
 import TeachersList from '../../components/TeachersList/TeachersList';
 
 const Teachers = () => {
-
-    const [teachers, setTeachers] = useState([]);
-  
+    
     const { data, error } = useFetchData({url:'http://localhost:3010/teachers'});
-  
+    const context = useContext(ListContext);  
+
     useEffect(() => {
+      console.log(context)
       if(data) {
-        setTeachers(data)
+        context.updateList({data, type: 'teachers'});
       }
     }, [data]);
-  
+
     useEffect(() => {
       if(error) {
         console.log(error)
       }
     }, [error])
 
-
     return ( 
         <>
         <h1>Våra lärare</h1>
-        {teachers && <TeachersList teachers={teachers}/>}
+        {context.teachers && <TeachersList teachers={context.teachers}/>}
         </>
      );
 }

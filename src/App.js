@@ -4,7 +4,7 @@ import Home from './pages/Home/Home';
 import Courses from './pages/Courses/Courses';
 import Teachers from './pages/Teachers/Teachers';
 
-import Header from './components/layout/Header/Header'
+import Header from './layout/Header/Header'
 
 
 

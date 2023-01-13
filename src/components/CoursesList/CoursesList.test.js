@@ -1,27 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { ListContextProvider } from '../../store/list-context';
-import { setupServer } from 'msw/node';
-import { rest } from 'msw';
 
-import Courses from './Courses';
+import CoursesList from './CoursesList';
 
+describe('CoursesList component', () => {
 
-describe('Courses page', () => {
-  const setup = () => render(<Courses />, {wrapper: ListContextProvider});
-
-  test('Should have a title named "Våra kurser"', () => {
-    setup();
-
-    const title = screen.getByText(/Våra kurser/i);
-    expect(title).toBeInTheDocument();
-  })
-
-  test('Should render a list of courses if request is successful', async () => {
-
-    const server = setupServer(
-      rest.get('http://localhost:3010/courses', async (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json([
-          {
+    const courses = [
+        {
             "id": 4,
             "courseNumber": 104,
             "title": "JavaScript 4",
@@ -29,18 +13,41 @@ describe('Courses page', () => {
             "unit": "weeks",
             "description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam commodo venenatis rhoncus. Vivamus id lacus id elit tristique vulputate. Donec ut diam vitae ligula mollis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras tempor sed elit nec pretium. In accumsan odio id est vehicula tincidunt. Aliquam tincidunt risus nec tellus auctor, eget gravida purus efficitur. Morbi rhoncus erat ac leo gravida, id varius ex rhoncus. Donec a ultricies est. Phasellus congue tincidunt vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus pretium vel odio et tincidunt.Ut dignissim mi ac elit facilisis feugiat. Etiam velit ligula, interdum id nisi sed, auctor tristique felis. Pellentesque laoreet eleifend nibh eu consequat. Aenean ex odio, interdum id purus quis, vulputate consectetur leo. Vestibulum vitae commodo mauris. Vestibulum blandit, tortor vitae aliquam euismod, urna orci condimentum quam, in dapibus urna tortor quis nibh. Maecenas tempus elit nibh, in luctus ipsum dignissim vel. Ut volutpat enim et est aliquam rhoncus.",
             "startDate": "2023-05-29"
-          }
-        ]))
-      }),
-    ) 
+          },      
+    ]
 
-      server.listen();
+  const setup = () => render(<CoursesList courses={courses}/>)
+  
+//   Vi vill att listan med kurser innehåller kursnamn, kursnummer och längd på
+//   kursen samt startdatum. För listan av lärare behöver vi hantera förnamn, efternamn,
+//   personnummer, e-post samt mobilnummer.
 
-      setup();
+  test('Should include courses name', () => {
+    setup();
 
-      const courses = await screen.findAllByRole('listitem');
+    const name = screen.getByText(`${courses[0].title}`);
+    expect(name).toBeInTheDocument();
+  })
 
-      expect(courses).not.toHaveLength(0);
+  test('Should include coursenumber', () => {
+    setup();
+
+    const courseNumber = screen.getByText(`${courses[0].courseNumber}`);
+    expect(courseNumber).toBeInTheDocument();
+  })
+
+  test('Should include courses start date', () => {
+    setup();
+
+    const startDate = screen.getByText(`${courses[0].startDate}`);
+    expect(startDate).toBeInTheDocument();
+  })
+
+  test('Should include courses duration', () => {
+    setup();
+
+    const duration = screen.getByText(`${courses[0].duration} ${courses[0].unit}`);
+    expect(duration).toBeInTheDocument();
   })
 
 });

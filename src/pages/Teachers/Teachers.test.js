@@ -2,10 +2,12 @@ import { render, screen } from '@testing-library/react';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 
+import { ListContextProvider } from '../../store/list-context';
+
 import Teachers from './Teachers';
 
 describe('Teachers page', () => {
-  const setup = () => render(<Teachers />);
+  const setup = () => render(<Teachers />,{wrapper: ListContextProvider});
 
   test('Should have a title named "Våra lärare"', () => {
     setup();
@@ -36,7 +38,7 @@ describe('Teachers page', () => {
 
       setup();
 
-      const teachers = await screen.findAllByRole('listitem');
+      const teachers = await screen.findAllByRole('listitem')
 
       expect(teachers).not.toHaveLength(0);
   })
