@@ -1,4 +1,4 @@
-import './header.scss'
+import './Header.scss'
 
 import Navbar from '../Navbar/Navbar';
 
