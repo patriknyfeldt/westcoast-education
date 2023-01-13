@@ -8,7 +8,7 @@ const ListContext = React.createContext({
 
 export const ListContextProvider = (props) => {
 
-  let [teachers, setTeachers] = useState([]);
+  const [teachers, setTeachers] = useState([]);
   const [courses, setCourses] = useState([]);
 
   const updateList = ({data, type}) => {

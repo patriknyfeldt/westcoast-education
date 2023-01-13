@@ -11,9 +11,8 @@ import CoursesList from '../../components/CoursesList/CoursesList';
 const Courses = () => {
 
     const context = useContext(ListContext);
-  
     const { data, error } = useFetchData({url:'http://localhost:3010/courses'});
-  
+    
     useEffect(() => {
       if(data) {
         context.updateList({data, type: 'courses'});

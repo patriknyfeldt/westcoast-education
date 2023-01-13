@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+// import ListContext from '../store/list-context';
 
 const useFetchData = (config) => {
   const [data, setData] = useState(undefined);
   const [error, setError] = useState('');
+  // const context = useContext(ListContext);
 
   useEffect(() => {
     const loadData = async () => {
@@ -15,6 +17,7 @@ const useFetchData = (config) => {
 
         if (response.status === 200) {
           setData(await response.json());
+          // context.updateList({data: await response.json(), type: config.type})
         }
       } catch (error) {
         setError(error);
