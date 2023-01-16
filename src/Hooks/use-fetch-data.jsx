@@ -26,7 +26,7 @@ const useFetchData = (config) => {
       (config.type === 'courses' && !context.courses.length)){
       loadData();
     }
-  }, []);
+  }, [context.teachers, context.courses]);
 
 };
 

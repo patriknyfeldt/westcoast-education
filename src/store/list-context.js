@@ -5,7 +5,7 @@ const ListContext = React.createContext({
   handleError: () => {},
   teachers: [],
   courses: [],
-  error: null
+  error: null,
 });
 
 export const ListContextProvider = (props) => {
@@ -33,7 +33,7 @@ export const ListContextProvider = (props) => {
         teachers,
         courses,
         handleError,
-        error
+        error,
       }}
     >
       {props.children}
