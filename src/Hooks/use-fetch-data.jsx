@@ -1,13 +1,12 @@
 import { useState, useEffect, useContext } from 'react';
-// import ListContext from '../store/list-context';
+import ListContext from '../store/list-context';
 
 const useFetchData = (config) => {
-  const [data, setData] = useState(undefined);
-  const [error, setError] = useState('');
-  // const context = useContext(ListContext);
+  const context = useContext(ListContext);
 
   useEffect(() => {
     const loadData = async () => {
+
       try {
         const response = await fetch(config.url, {
           method: config.method ? config.method : 'GET',
@@ -16,18 +15,19 @@ const useFetchData = (config) => {
         });
 
         if (response.status === 200) {
-          setData(await response.json());
-          // context.updateList({data: await response.json(), type: config.type})
+          context.updateList({data: await response.json(), type: config.type})
         }
       } catch (error) {
-        setError(error);
+        context.handleError(error);
       }
     };
-
-    loadData();
+    if(
+      (config.type === 'teachers' && !context.teachers.length) || 
+      (config.type === 'courses' && !context.courses.length)){
+      loadData();
+    }
   }, []);
 
-  return { data, error };
 };
 
 export default useFetchData;

@@ -16,5 +16,6 @@ describe('Routing', () => {
 
     await userEvent.click(screen.getByText('Kurser'));
     expect(screen.getByText(/Våra kurser/i)).toBeInTheDocument();
+
   });
 });
