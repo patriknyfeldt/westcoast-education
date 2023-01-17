@@ -112,40 +112,28 @@ describe('Form should have:', () => {
         expect(submitButton).toBeEnabled();
     });
 
-    test('saves the user when "Register User" is clicked', async () => {
-      // Arrange...
-      let requestBody;
+        test('saves the user when "Register User" is clicked', async () => {
+        let requestBody;
 
-      // Configure MSW server...
-      // Create an endpoint for hijacking post request...
-      const server = setupServer(
-        rest.post('http://localhost:3010/courses', (req, res, context) => {
-          req.json().then((data) => (requestBody = data));
-          return res(context.status(201));
-        }),
-      );
+        const server = setupServer(
+            rest.post('http://localhost:3010/courses', (req, res, context) => {
+            req.json().then((data) => (requestBody = data));
+            return res(context.status(201));
+            }),
+        );
 
-      // Start listening
-      server.listen();
+        server.listen();
 
-      setup();
-      const courseTitleInput = screen.getByLabelText(/Kursens namn:/i);
-      const courseNumber = screen.getByLabelText(/Kursnummer:/i);
-      const courseStartDateInput = screen.getByLabelText(/Kursens startdatum:/i);
-      const courseDuration = screen.getByLabelText(/Kursens längd:/i);
-      const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar');
-      const courseDescription = screen.getByLabelText(/Beskrivning/i);
-      const submitButton = screen.getByRole('button', {
-          name: /Lägg till/i,
-      });
-
-      // Act...
-    //   await userEvent.type(userNameInput, 'MalinGustavsson');
-    //   await userEvent.type(emailInput, 'malin@gmail.com');
-    //   await userEvent.type(passwordInput, 'Pa$$w0rd');
-    //   await userEvent.type(confirmPasswordInput, 'Pa$$w0rd');
-
-    //   await userEvent.click(registerButton);
+        setup();
+        const courseTitleInput = screen.getByLabelText(/Kursens namn:/i);
+        const courseNumber = screen.getByLabelText(/Kursnummer:/i);
+        const courseStartDateInput = screen.getByLabelText(/Kursens startdatum:/i);
+        const courseDuration = screen.getByLabelText(/Kursens längd:/i);
+        const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar');
+        const courseDescription = screen.getByLabelText(/Beskrivning/i);
+        const submitButton = screen.getByRole('button', {
+            name: /Lägg till/i,
+        });
 
         await userEvent.type(courseTitleInput, 'React');
         await userEvent.type(courseNumber, '999');
