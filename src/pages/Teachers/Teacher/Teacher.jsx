@@ -11,7 +11,7 @@ const Teacher = () => {
     const [teacher, setTeacher] = useState(null);
 
     useEffect(() => {
-        if(!context.courses.length) {
+        if(!context.teachers.length) {
             context.getData('teachers');
         }
     }, [context])

@@ -1,6 +1,7 @@
  import './Courses.scss';
 
 import {useContext, useEffect, useState} from 'react';
+
 import ListContext from '../../store/list-context';
 
 import CoursesList from '../../components/CoursesList/CoursesList';
@@ -18,16 +19,25 @@ const Courses = () => {
         }
     }, [context])
 
+    const openModal = () => {
+        setShowModal(true);
+    }
+
+    const closeModal = () => {
+        setShowModal(false)
+    }
+
     return ( 
         <>
         <h1>Våra kurser</h1>
+        <button onClick={openModal}>Lägg till en kurs</button>
         {context.courses && <CoursesList courses={context.courses}/>}
         {showModal && 
             <Modal 
-            title='Lägg till ny kurs'
-            onClick={() => {setShowModal(!showModal)}}
+            title='Lägg till kurs'
+            onClick={closeModal}
             >
-                <AddCourse setShowModal={setShowModal}/>
+                <AddCourse closeModal={closeModal}/>
             </Modal>}
         </>
      );

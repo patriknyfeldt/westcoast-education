@@ -125,6 +125,24 @@
       "unit": "weeks",
       "description": "hhhhhhhhhhhhhhhhhhhhh",
       "id": 14
+    },
+    {
+      "title": "bb",
+      "courseNumber": "345",
+      "startDate": "2023-01-12",
+      "duration": "3",
+      "unit": "weeks",
+      "description": "dbgas<gragewgawgwe",
+      "id": 15
+    },
+    {
+      "title": "ee",
+      "courseNumber": "44",
+      "startDate": "2023-01-20",
+      "duration": "7",
+      "unit": "weeks",
+      "description": "sdgeth",
+      "id": 16
     }
   ],
   "teachers": [
@@ -183,6 +201,15 @@
         "JavaScript",
         "Vue.js"
       ]
+    },
+    {
+      "firstName": "Patrik",
+      "lastname": "Nyfeldt",
+      "personalIdNumber": "1985-09-23",
+      "email": "patrik@mail.com",
+      "phoneNumber": "0735268608",
+      "competencies": [],
+      "id": 5
     }
   ]
 }
