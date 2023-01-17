@@ -1,10 +1,7 @@
- 
-import './Courses.scss';
+ import './Courses.scss';
 
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import ListContext from '../../store/list-context';
-
-import useFetchData from '../../hooks/use-fetch-data'
 
 import CoursesList from '../../components/CoursesList/CoursesList';
 import AddCourse from '../../components/AddCourse/AddCourse';
@@ -13,9 +10,13 @@ import Modal from '../../ui/Modal/Modal';
 const Courses = () => {
 
     const context = useContext(ListContext);
-    const [showModal, setShowModal] = useState(true)
+    const [showModal, setShowModal] = useState(false)
     
-    useFetchData({url:'http://localhost:3010/courses', type:'courses'})
+    useEffect(() => {
+        if(!context.courses.length) {
+            context.getData('courses');
+        }
+    }, [context])
 
     return ( 
         <>

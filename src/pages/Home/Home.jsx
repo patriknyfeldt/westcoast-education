@@ -1,17 +1,19 @@
 import './Home.scss';
 
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ListContext from '../../store/list-context';
 
-import useFetchData from '../../hooks/use-fetch-data'
-
-
 const Home = () => {
+
     const navigate = useNavigate();
     const context = useContext(ListContext);
     
-    useFetchData({url:'http://localhost:3010/courses', type:'courses'})
+    useEffect(() => {
+        if(!context.courses.length) {
+            context.getData('courses');
+        }
+    }, [context])
 
     return ( 
         <div className='home'>

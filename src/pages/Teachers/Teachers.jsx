@@ -1,16 +1,20 @@
 import './Teachers.scss';
 
-import {useContext} from 'react';
+import {useContext, useEffect} from 'react';
 
 import ListContext from '../../store/list-context';
-import useFetchData from '../../hooks/use-fetch-data';
 
 import TeachersList from '../../components/TeachersList/TeachersList';
 
 const Teachers = () => {
     
     const context = useContext(ListContext);
-    useFetchData({url:'http://localhost:3010/teachers', type:'teachers'})
+
+    useEffect(() => {
+        if(!context.courses.length) {
+            context.getData('teachers');
+        }
+    }, [context])
 
     return ( 
         <>

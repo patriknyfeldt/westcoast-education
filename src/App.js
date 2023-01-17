@@ -7,9 +7,6 @@ import Course from './pages/Courses/Course/Course';
 import Teacher from './pages/Teachers/Teacher/Teacher';
 import Header from './layout/Header/Header'
 
-
-
-
 function App() {
   return (
   <Router>

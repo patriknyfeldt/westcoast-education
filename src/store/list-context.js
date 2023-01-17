@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const ListContext = React.createContext({
-  updateList: () => {},
-  handleError: () => {},
+  getData: () => {},
   teachers: [],
   courses: [],
   error: null,
@@ -14,25 +13,32 @@ export const ListContextProvider = (props) => {
   const [courses, setCourses] = useState([]);
   const [error, setError] = useState(null);
 
-  const updateList = ({data, type}) => {
-      
-      if(type === 'teachers'){
-        setTeachers(data)
+  const baseUrl = 'http://localhost:3010/';
+
+  const getData  = async (type) => {
+    try {
+      const response = await fetch(`${baseUrl}${type}`);
+      const data = await response.json();
+
+      if (response.status === 200) {
+        if(type === 'teachers'){
+          setTeachers(data);
+        }
+        if(type === 'courses') {
+          setCourses(data);
+        }  
       }
-      if(type === 'courses') {
-        setCourses(data)
-      }
+    } catch (error) {
+      setError(error);
     }
-    
-  const handleError = (error => setError(error))
+  };
   
   return (
     <ListContext.Provider
       value={{
-        updateList,
+        getData,
         teachers,
         courses,
-        handleError,
         error,
       }}
     >

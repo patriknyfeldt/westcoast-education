@@ -1,17 +1,21 @@
 import './Course.scss';
 
-import { useParams } from "react-router-dom";
 import {useContext, useEffect, useState} from 'react';
+import { useParams } from "react-router-dom";
 
-import useFetchData from '../../../hooks/use-fetch-data';
 import ListContext from '../../../store/list-context';
 
 const Course = () => {
-    const { courseId } = useParams()
 
-    useFetchData({url:'http://localhost:3010/courses', type:'courses'})
+    const { courseId } = useParams()
     const context = useContext(ListContext);
     const [course, setCourse] = useState(null);
+    
+    useEffect(() => {
+        if(!context.courses.length) {
+            context.getData('courses');
+        }
+    }, [context])
     
     useEffect(() => {
         const currentCourse = context.courses.find(course => course.id === +courseId )
