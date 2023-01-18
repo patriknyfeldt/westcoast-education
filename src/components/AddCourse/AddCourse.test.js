@@ -112,7 +112,7 @@ describe('Form should have:', () => {
         expect(submitButton).toBeEnabled();
     });
 
-        test('saves the user when "Register User" is clicked', async () => {
+        test('Saves the course when "Lägg till" is clicked', async () => {
         let requestBody;
 
         const server = setupServer(
