@@ -9,7 +9,18 @@
     }
 
     &__list {
-        @include list();
+        
+        @include flex(column, center, center);
+        width: 100%;
+        gap: $default-spacing;
+    
+        @include bp(tablet) {
+            max-width: 60%;
+        }
+    
+        @include bp(laptop) {
+            max-width: 50%;
+        }
     }
 
     

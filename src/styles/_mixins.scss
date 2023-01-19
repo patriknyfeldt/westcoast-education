@@ -20,19 +20,6 @@
   }
 }
 
-@mixin list() {
-  @include flex(column, center, flex-start);
-  gap: $default-spacing;
-
-  @include bp(tablet) {
-      max-width: 80%;
-  }
-
-  @include bp(laptop) {
-      max-width: 50%;
-  }
-}
-
 @mixin button($type : default) {
   font-size: $font-size-s;
   padding: $px8;
@@ -63,11 +50,65 @@
       background-color: lighten($tertiary-bg-color, 5%);
     }
   }
-
-
 }
 
+@mixin card($class) {
+  
+  #{$class} {
+    @include page();
+    @include flex(column, center, center);
+    
+    &__wrapper {
+        @include flex(column, center, center);
+        gap: $px8;
+        max-width: 450px;
+    }
+  
+    &__heading {
+        @include page-heading();
+    }
 
+    &__text-wrapper {
+        @include flex(row, space-between, center);
+        width: 100%;
+        gap: $default-spacing;
+    }
+
+    &__label {
+        align-self: flex-start;
+        font-weight: bold;
+
+    }
+
+    &__text {
+        text-align: end;
+        width:  60%;
+        overflow-wrap: break-word;
+    }
+
+
+    &__list-heading,
+    &__description-heading {
+        font-size: $font-size-m;
+
+        @include bp(laptop) {
+            font-size: $font-size-l;
+        }
+    }
+
+    &__description {
+      padding: $default-spacing;
+
+    }
+
+    &__competencies-list {
+        @include flex(column, center, flex-start);
+        padding: $default-spacing;
+        gap: $px8;
+        font-weight: bold;
+    }
+  }
+}
 
 @mixin bp($media) {
 

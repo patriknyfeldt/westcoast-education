@@ -1,1 +1,10 @@
 @use '/src/styles/' as *;
+
+.teachers {
+    @include flex(column, center, center);
+    @include page();
+
+    &__heading {
+        @include page-heading();
+    }
+}

@@ -4,7 +4,7 @@ import {useContext, useEffect, useState} from 'react';
 
 import ListContext from '../../store/list-context';
 
-import CoursesList from '../../components/CoursesList/CoursesList';
+import CoursesList from '../../components/Lists/CoursesList/CoursesList';
 import AddCourse from '../../components/AddCourse/AddCourse';
 import Modal from '../../ui/Modal/Modal';
 import Button from '../../ui/Button/Button';

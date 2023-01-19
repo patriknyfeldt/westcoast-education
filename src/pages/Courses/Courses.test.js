@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { ListContextProvider } from '../../store/list-context';
+import { MemoryRouter } from 'react-router-dom';
+
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 
@@ -7,7 +9,12 @@ import Courses from './Courses';
 
 
 describe('Courses page', () => {
-  const setup = () => render(<Courses />, {wrapper: ListContextProvider});
+  const setup = () => render(
+  <ListContextProvider>
+    <Courses />
+  </ListContextProvider>, 
+  {wrapper: MemoryRouter}
+  );
 
   test('Should have a title named "Våra kurser"', () => {
     setup();

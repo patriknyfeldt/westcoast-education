@@ -1,4 +1,6 @@
+import { createMemoryHistory } from '@remix-run/router';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import TeachersList from './TeachersList';
 
@@ -16,7 +18,7 @@ describe('TeachersList component', () => {
         }
     ]
 
-  const setup = () => render(<TeachersList teachers={teachers}/>)
+  const setup = () => render(<TeachersList teachers={teachers}/>, {wrapper: MemoryRouter})
   
   test('Should include teachers name', () => {
     setup();

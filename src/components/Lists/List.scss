@@ -1,0 +1,33 @@
+@use '/src/styles/' as *;
+
+.list {
+    @include flex(column, center, center);
+    min-width: 450px;
+    gap: $default-spacing;
+
+    &__item {
+        @include flex(column, center, space-between);
+        gap: $px8;
+        width: 80%;
+        padding: $px8;
+        border-bottom: 1px solid $primary-border-color;
+    }
+    
+    &__text-wrapper {
+        @include flex(row, space-between, center);
+    }
+
+    &__label {
+        font-weight: bold;
+    }
+    
+    &__text {
+        text-align: end;
+        width:  60%;
+        overflow-wrap: break-word;
+    }
+
+    &__link {
+        @include flex(initial, center, center);
+    }
+}

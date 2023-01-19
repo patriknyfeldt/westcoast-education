@@ -1,14 +1,18 @@
 import { render, screen } from '@testing-library/react';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
-
+import { MemoryRouter } from 'react-router-dom';
 import { ListContextProvider } from '../../store/list-context';
 
 import Teachers from './Teachers';
 describe('Teachers page', () => {
-  const setup = () => render(<Teachers />,{wrapper: ListContextProvider});
-
-  test('Should have a title named "Våra lärare"', () => {
+  const setup = () => render(
+    <ListContextProvider>
+      <Teachers />
+    </ListContextProvider>, 
+    {wrapper: MemoryRouter}
+    );
+    test('Should have a title named "Våra lärare"', () => {
     setup();
 
     const title = screen.getByText(/Våra lärare/i);

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-
+import { MemoryRouter } from 'react-router-dom';
 import CoursesList from './CoursesList';
 
 describe('CoursesList component', () => {
@@ -16,7 +16,7 @@ describe('CoursesList component', () => {
           },      
     ]
 
-  const setup = () => render(<CoursesList courses={courses}/>)
+  const setup = () => render(<CoursesList courses={courses}/>, {wrapper: MemoryRouter})
   
   test('Should include courses name', () => {
     setup();
@@ -42,7 +42,7 @@ describe('CoursesList component', () => {
   test('Should include courses duration', () => {
     setup();
 
-    const duration = screen.getByText(`${courses[0].duration} ${courses[0].unit}`);
+    const duration = screen.getByText(`${courses[0].duration} ${courses[0].unit === 'weeks' ? 'veckor' : 'dagar'}`);
     expect(duration).toBeInTheDocument();
   })
 
