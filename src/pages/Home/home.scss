@@ -1,1 +1,36 @@
 @use '/src/styles/' as *;
+
+.home {
+    @include flex(column, center, center);
+    @include page();
+    
+    &__heading {
+        @include page-heading();
+    }
+
+    &__list {
+        @include list();
+    }
+
+    
+    &__list-item {
+        @include flex(column, center, flex-start);
+        padding: $default-spacing;
+        gap: $px4;
+    }
+    
+    &__course-title {
+        font-size: $font-size-m;
+        @include bp(laptop) {
+            font-size: $font-size-l;
+        }
+    }
+
+    &__text {
+        
+    }
+
+    &__link {
+        font-weight: bold;
+    }
+}

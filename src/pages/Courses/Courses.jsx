@@ -1,4 +1,4 @@
- import './Courses.scss';
+ import './Courses.scss'
 
 import {useContext, useEffect, useState} from 'react';
 
@@ -7,6 +7,7 @@ import ListContext from '../../store/list-context';
 import CoursesList from '../../components/CoursesList/CoursesList';
 import AddCourse from '../../components/AddCourse/AddCourse';
 import Modal from '../../ui/Modal/Modal';
+import Button from '../../ui/Button/Button';
 
 const Courses = () => {
 
@@ -28,9 +29,9 @@ const Courses = () => {
     }
 
     return ( 
-        <>
-        <h1>Våra kurser</h1>
-        <button onClick={openModal}>Lägg till en kurs</button>
+        <div className='courses'>
+        <h1 className='courses__heading'>Våra kurser</h1>
+        <Button onClick={openModal} type='secondary'> Lägg till en kurs </Button> 
         {context.courses && <CoursesList courses={context.courses}/>}
         {showModal && 
             <Modal 
@@ -39,7 +40,7 @@ const Courses = () => {
             >
                 <AddCourse closeModal={closeModal}/>
             </Modal>}
-        </>
+        </div>
      );
 }
  

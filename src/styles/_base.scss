@@ -20,12 +20,22 @@ body {
   color: $primary-text-color;
 }
 
+.App {
+  position: relative;
+  min-height: 100vh;
+}
+
+main {
+  padding-bottom: $px40;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
+  font-size: inherit;
   font-family: $title-font;
 }
 

@@ -5,7 +5,7 @@ import {useContext, useEffect, useState} from 'react';
 import ListContext from '../../store/list-context';
 
 import TeachersList from '../../components/TeachersList/TeachersList';
-import AddTeacher from '../../components/AddTeacher/Addteacher';
+import AddTeacher from '../../components/AddTeacher/AddTeacher';
 import Modal from '../../ui/Modal/Modal';
 
 const Teachers = () => {

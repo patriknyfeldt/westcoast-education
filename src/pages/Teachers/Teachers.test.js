@@ -5,7 +5,6 @@ import { rest } from 'msw';
 import { ListContextProvider } from '../../store/list-context';
 
 import Teachers from './Teachers';
-
 describe('Teachers page', () => {
   const setup = () => render(<Teachers />,{wrapper: ListContextProvider});
 

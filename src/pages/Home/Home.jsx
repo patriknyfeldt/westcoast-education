@@ -1,12 +1,12 @@
 import './Home.scss';
 
 import { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import ListContext from '../../store/list-context';
 
 const Home = () => {
 
-    const navigate = useNavigate();
     const context = useContext(ListContext);
     
     useEffect(() => {
@@ -22,9 +22,13 @@ const Home = () => {
             <ul className='home__list'>
                 {context.courses.map((course) => {
                     return (
-                    <li key={course.id} onClick={() => navigate(`/courses/${course.id}`)} className='home__list-item'>
-                        <span>{course.title}</span>
-                    </li>
+                        <li key={course.id}  className='home__list-item'>
+                            <h2 className='home__course-title'>{course.title}</h2>
+                            <p className='home__text'>{course.description.slice(0, 120)}...</p>
+                            <Link className='home__link' to={`/courses/${course.id}`}>
+                                Läs mer
+                            </Link>
+                        </li>
                     )
                 })}
             </ul>

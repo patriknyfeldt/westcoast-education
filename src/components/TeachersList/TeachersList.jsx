@@ -1,4 +1,3 @@
-import './TeachersList.scss';
 
 const TeachersList = ({teachers}) => {
 

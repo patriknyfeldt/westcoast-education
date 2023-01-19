@@ -7,6 +7,67 @@
     align-items: $align;
 }
 
+@mixin page() {
+  gap: $default-spacing;
+  padding: $default-spacing;
+}
+
+@mixin page-heading() {
+  font-size: $font-size-l;
+
+  @include bp(laptop) {
+      font-size: $font-size-xl;
+  }
+}
+
+@mixin list() {
+  @include flex(column, center, flex-start);
+  gap: $default-spacing;
+
+  @include bp(tablet) {
+      max-width: 80%;
+  }
+
+  @include bp(laptop) {
+      max-width: 50%;
+  }
+}
+
+@mixin button($type : default) {
+  font-size: $font-size-s;
+  padding: $px8;
+  min-width: 130px;
+  border: 1px solid $primary-border-color;
+  
+  @if $type ==  primary {
+    background-color: $primary-bg-color;
+        
+    &:hover {
+      background-color: darken($primary-bg-color, 2%);
+      }
+
+    }
+  
+  @else if $type == secondary {
+    background-color: $secondary-bg-color;
+    color: $secondary-text-color;
+    &:hover {
+      background-color: lighten($secondary-bg-color, 5%);
+    }
+  }
+
+  @else if $type == tertiary {
+    background-color: $tertiary-bg-color;
+
+    &:hover {
+      background-color: lighten($tertiary-bg-color, 5%);
+    }
+  }
+
+
+}
+
+
 
 @mixin bp($media) {
 

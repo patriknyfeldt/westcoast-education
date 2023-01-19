@@ -8,8 +8,8 @@ import AddTeacher from './AddTeacher';
 describe('AddTeacher component', () => {
     const mockCloseModal = jest.fn();
     const setup = () => render(<AddTeacher closeModal={mockCloseModal}/>);
-
-describe('Form should have:', () => {
+    
+    describe('Form should have:', () => {
 
     test('A teacher first name input', () => {
     
@@ -144,7 +144,7 @@ describe('Form should have:', () => {
         await userEvent.click(submitButton);
 
 
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         expect(requestBody).toEqual({
             firstName: 'Patrik',
             lastName: 'Nyfeldt',

@@ -11,10 +11,10 @@ describe('Routing', () => {
 
     expect(screen.getByText(/Våra utbildningar/i)).toBeInTheDocument();
 
-    await userEvent.click(screen.getByText('Lärare'));
+    await userEvent.click(screen.getAllByText('Lärare')[0]);
     expect(screen.getByText(/Våra lärare/i)).toBeInTheDocument();
 
-    await userEvent.click(screen.getByText('Kurser'));
+    await userEvent.click(screen.getAllByText('Kurser')[0]);
     expect(screen.getByText(/Våra kurser/i)).toBeInTheDocument();
 
   });

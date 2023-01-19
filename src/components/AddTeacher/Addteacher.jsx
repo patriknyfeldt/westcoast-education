@@ -100,6 +100,7 @@ const AddTeacher = ({closeModal}) => {
         .map(competence => competence.name)
       };
 
+    //   context.addData({body: teacher, type: 'teachers'});
       addTeacher(teacher);
       clearForm();
       closeModal();

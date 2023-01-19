@@ -99,7 +99,12 @@
       "personalIdNumber": "1975-12-11",
       "email": "adam@mail.com",
       "phoneNumber": "0799991111",
-      "competencies": ["HTML", "CSS", "JavaScript", "Node.js"]
+      "competencies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Node.js"
+      ]
     },
     {
       "id": 2,
@@ -108,7 +113,12 @@
       "personalIdNumber": "1972-09-23",
       "email": "eva@mail.com",
       "phoneNumber": "0711999992",
-      "competencies": ["HTML", "CSS", "JavaScript", "Angular"]
+      "competencies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Angular"
+      ]
     },
     {
       "id": 3,
@@ -117,7 +127,12 @@
       "personalIdNumber": "1987-03-16",
       "email": "erika@mail.com",
       "phoneNumber": "0722222333",
-      "competencies": ["HTML", "CSS", "JavaScript", "React"]
+      "competencies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React"
+      ]
     },
     {
       "id": 4,
@@ -126,7 +141,71 @@
       "personalIdNumber": "1989-05-11",
       "email": "wiliam@mail.com",
       "phoneNumber": "0723445566",
-      "competencies": ["HTML", "CSS", "JavaScript", "Vue.js"]
+      "competencies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Vue.js"
+      ]
+    },
+    {
+      "firstName": "aaa",
+      "lastName": "aaa",
+      "personalIdNumber": "1975-06-28",
+      "email": "aa@kk.se",
+      "phoneNumber": "2222",
+      "competencies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "id": 5
+    },
+    {
+      "firstName": "papaa",
+      "lastName": "aa",
+      "personalIdNumber": "1970-01-14",
+      "email": "ss@hot.se",
+      "phoneNumber": "333",
+      "competencies": [
+        "HTML",
+        "CSS"
+      ],
+      "id": 6
+    },
+    {
+      "firstName": "gg",
+      "lastName": "ff",
+      "personalIdNumber": "2023-01-02",
+      "email": "gg@mm.se",
+      "phoneNumber": "44",
+      "competencies": [
+        "HTML",
+        "CSS"
+      ],
+      "id": 7
+    },
+    {
+      "firstName": "Patrik",
+      "lastName": "Nyfeldt",
+      "personalIdNumber": "1985-09-23",
+      "email": "patrik@mail.com",
+      "phoneNumber": "0700000000",
+      "competencies": [
+        "React"
+      ],
+      "id": 8
+    },
+    {
+      "firstName": "Patrik",
+      "lastName": "Nyfeldt",
+      "personalIdNumber": "1985-09-23",
+      "email": "patrik@mail.com",
+      "phoneNumber": "0700000000",
+      "competencies": [
+        "React"
+      ],
+      "id": 9
     }
   ]
 }

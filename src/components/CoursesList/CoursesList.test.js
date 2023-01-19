@@ -18,10 +18,6 @@ describe('CoursesList component', () => {
 
   const setup = () => render(<CoursesList courses={courses}/>)
   
-//   Vi vill att listan med kurser innehåller kursnamn, kursnummer och längd på
-//   kursen samt startdatum. För listan av lärare behöver vi hantera förnamn, efternamn,
-//   personnummer, e-post samt mobilnummer.
-
   test('Should include courses name', () => {
     setup();
 

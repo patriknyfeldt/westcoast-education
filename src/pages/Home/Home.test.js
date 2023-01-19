@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
 import Home from './Home';
 
 describe('Home page', () => {
-  const setup = () => render(<Home />, {wrapper: MemoryRouter});
+  const setup = async () => render(<Home />);
 
-  test('Should have a title named "Våra utbildningar"', () => {
-    setup();
+  test('Should have a title named "Våra utbildningar"', async () => {
+    await setup();
 
     const title = screen.getByText(/Våra utbildningar/i);
-    expect(title).toBeInTheDocument();
+
+      expect(title).toBeInTheDocument();
   })
 });

@@ -12,11 +12,12 @@ $px24: rem-calc(24px);
 $px32: rem-calc(32px);
 $px40: rem-calc(40px);
 $px48: rem-calc(48px);
-$px56: rem-calc(56px);
-$px64: rem-calc(64px);
-$px72: rem-calc(72px);
-$px80: rem-calc(80px);
+// $px56: rem-calc(56px);
+// $px64: rem-calc(64px);
+// $px72: rem-calc(72px);
+// $px80: rem-calc(80px);
 
+$double-spacing: $px40;
 $default-spacing: $px20;
 
 // font-sizes
@@ -25,16 +26,20 @@ $font-size-xs: $px12;
 $font-size-s: $px16;
 $font-size-m: $px20;
 $font-size-l: $px24;
-$font-size-xl: $px40;
+$font-size-xl: $px32; 
+// $font-size-xxl: $px40;
 
 // colors
 
 $primary-bg-color: #FFFBEB;
 $secondary-bg-color:#495579;
-$tertiary-bg-color: #263159;
+$tertiary-bg-color: #787b86;
 
 $primary-text-color: #131313;
 $secondary-text-color: #FAFAFA;
+
+$primary-border-color: #131313;
+$secondary-border-color: #FFFBEB;
 
 // breakpoints
 

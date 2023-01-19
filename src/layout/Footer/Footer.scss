@@ -1,0 +1,10 @@
+@use '/src/styles/' as *;
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: $px40;
+    background-color: $secondary-bg-color;
+    padding: $px10 $default-spacing;
+}

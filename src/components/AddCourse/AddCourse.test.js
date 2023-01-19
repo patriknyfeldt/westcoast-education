@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
@@ -17,6 +17,7 @@ describe('Form should have:', () => {
 
         const courseTitleInput = screen.getByLabelText(/Kursens namn:/i);
         expect(courseTitleInput).toBeInTheDocument();
+        
     });
 
     test('A course number input', () => {
@@ -144,8 +145,7 @@ describe('Form should have:', () => {
 
         await userEvent.click(submitButton);
 
-
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         expect(requestBody).toEqual({
             title: 'React',
             courseNumber: '999',

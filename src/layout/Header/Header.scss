@@ -2,9 +2,17 @@
 
 .header{
     @include flex(row, space-between, center);
-    width: 100vw;
+    width: 100%;
     background-color: $secondary-bg-color;
-    padding: 0 $default-spacing;
+    padding: $default-spacing;
+
+    @include bp(laptop) {
+        padding: $default-spacing $double-spacing;
+    }
+
+    &__link:hover {
+        text-decoration: none;
+    }
 
     &__heading {
         color: $secondary-text-color;

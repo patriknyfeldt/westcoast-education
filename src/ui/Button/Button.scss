@@ -1,0 +1,17 @@
+@use '/src/styles/' as *;
+
+.button {
+    
+    &--primary {
+        @include button(primary);
+
+    }
+
+    &--secondary {
+        @include button(secondary);
+    }
+
+    &--tertiary {
+        @include button(tertiary);
+    }
+}
