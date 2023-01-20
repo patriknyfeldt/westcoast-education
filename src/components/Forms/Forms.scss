@@ -2,40 +2,93 @@
 
 .form {
     @include flex(column, center, center);
-    gap: $default-spacing;
+    gap: $px8;
 
     &__input-wrapper {
         @include flex(column, center, center);
+        gap: $px4;
         padding: $px4;
-        min-width: 300px;
-        border: 1px solid black;
+        width: 300px;
     }
 
     &__label {
-
+        font-weight: bold;
     }
 
     &__text-input {
-        width: 100%;
+        @include input();
+    }
+    
+    &__duration-wrapper {
+        @include flex(row, center, flex-start);
+        width: 300px;
     }
 
     &__number-input {
-
+        @include input(70%);
     }
-
+    
     &__date-input {
+        @include input();
 
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     &__select {
+        @include input(70%);
 
+        &:hover {
+            cursor: pointer;
+        }
     }
-
+    
     &__option {
-
+        text-align: center;
+        height: 35px;
     }
 
     &__text-area {
+        @include input;
+        height: 60px;
+    }
+
+    &__competencies-wrapper {
+        @include flex(column, center, center);
+        gap: $px4;
+        width: 100%;
+    }
+
+    &__list {
+        @include flex(column, center, center);
+        flex-wrap: wrap;
+        gap: $px8;
+        width: 300px;
+        height: 120px;
+    }
+
+    &__list-item {
+    }
+
+    &__checkbox-label {
         
+        &--checked {
+            font-weight: bold;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    &__checkbox + label{
+
+    }
+
+    &__error-msg {
+        width: 100%;
+        text-align: center;
+        color: $error-color;
     }
 }

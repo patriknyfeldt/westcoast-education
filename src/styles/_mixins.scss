@@ -20,6 +20,13 @@
   }
 }
 
+@mixin input($width: 100%) {
+  border: 1px solid $primary-border-color;
+  width: $width;
+  height: 35px;
+  padding: $px4;
+}
+
 @mixin button($type : default) {
   @include flex(row, center, center);
   font-size: $font-size-s;

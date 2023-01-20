@@ -20,8 +20,6 @@ const ModalOverlay = ({children, title, onClick}) => {
             {children}
           </div>
         </main>
-        <footer className='modal__footer'>
-        </footer>
     </div>
   );
 };

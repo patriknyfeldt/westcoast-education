@@ -2,12 +2,14 @@ import { render, screen, fireEvent} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
+import { MemoryRouter } from 'react-router-dom';
 
 import AddCourse from './AddCourse';
 
 describe('AddCourse component', () => {
+    
     const mockCloseModal = jest.fn();
-    const setup = () => render(<AddCourse closeModal={mockCloseModal}/>);
+    const setup = () => render(<AddCourse closeModal={mockCloseModal}/>, {wrapper: MemoryRouter});
 
 describe('Form should have:', () => {
 
@@ -51,7 +53,7 @@ describe('Form should have:', () => {
 
         setup();
     
-            const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar');
+            const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar:');
             expect(courseDurationUnitInput).toBeInTheDocument();
             
         });
@@ -65,11 +67,11 @@ describe('Form should have:', () => {
             
         });
         
-    test('A submit button', () => {
+    test('A submit button', async () => {
 
         setup();
 
-        const submitButton = screen.getByRole('button', {
+        const submitButton = await screen.findByRole('button', {
             name: /Lägg till/i,
         });
         
@@ -97,7 +99,7 @@ describe('Form should have:', () => {
         const courseNumber = screen.getByLabelText(/Kursnummer:/i);
         const courseStartDateInput = screen.getByLabelText(/Kursens startdatum:/i);
         const courseDuration = screen.getByLabelText(/Kursens längd:/i);
-        const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar');
+        const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar:');
         const courseDescription = screen.getByLabelText(/Beskrivning/i);
         const submitButton = screen.getByRole('button', {
             name: /Lägg till/i,
@@ -130,10 +132,10 @@ describe('Form should have:', () => {
         const courseNumber = screen.getByLabelText(/Kursnummer:/i);
         const courseStartDateInput = screen.getByLabelText(/Kursens startdatum:/i);
         const courseDuration = screen.getByLabelText(/Kursens längd:/i);
-        const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar');
+        const courseDurationUnitInput = screen.getByLabelText('Veckor/Dagar:');
         const courseDescription = screen.getByLabelText(/Beskrivning/i);
         const submitButton = screen.getByRole('button', {
-            name: /Lägg till/i,
+            name: /Lägg till/i
         });
 
         await userEvent.type(courseTitleInput, 'React');

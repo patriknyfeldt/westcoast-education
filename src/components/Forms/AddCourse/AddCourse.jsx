@@ -6,6 +6,8 @@ import ListContext from '../../../store/list-context';
 
 import Button from '../../ui/Button/Button';
 
+
+
 const AddCourse = ({closeModal}) => {
     
     const context = useContext(ListContext);
@@ -99,7 +101,7 @@ const AddCourse = ({closeModal}) => {
         <form className='form' onSubmit={onSubmitHandler} onChange={onChangeHandler}>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="course-title">Kursens namn:</label>
-                <input className='form__text-input' id="course-title" type="text" pattern='[0-9]+' ref={courseTitleInput} />
+                <input className='form__text-input' id="course-title" type="text" ref={courseTitleInput} />
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="course-number">Kursnummer:</label>
@@ -110,24 +112,26 @@ const AddCourse = ({closeModal}) => {
                 <label className='form__label' htmlFor="course-date">Kursens startdatum:</label>
                 <input className='form__date-input' id='course-date' type="date" ref={courseStartDateInput} />
             </div>
+            <div className="form__duration-wrapper">
+              <div className='form__input-wrapper'>
+                  <label className='form__label' htmlFor="course-duration">Kursens längd:</label>
+                  <input className='form__number-input' id="course-duration" type="text" ref={courseDurationInput} onChange={((e) => {validate(e, 'duration')})}/>
+                  <p className='form__error-msg'>{errorMsgs?.duration}</p>
+              </div>
+              <div className='form__input-wrapper'>
+                  <label className='form__label' htmlFor="duration-unit">Veckor/Dagar:</label>
+                  <select className='form__select' name="duration-unit" id="duration-unit" defaultValue='' ref={courseUnitInput} >
+                      <option className='form__option' disabled value=''>Välj här</option>
+                      <option className='form__option' value="weeks">Veckor</option>
+                      <option className='form__option' value="days">Dagar</option>
+                  </select>
+              </div>
+            </div>
             <div className='form__input-wrapper'>
-                <label className='form__label' htmlFor="course-duration">Kursens längd:</label>
-                <input className='form__text-input' id="course-duration" type="text" ref={courseDurationInput} onChange={((e) => {validate(e, 'duration')})}/>
-                <p className='form__error-msg'>{errorMsgs?.duration}</p>
+                <label className='form__label' htmlFor="course-description">Beskrivning:</label>
+                <textarea className='form__text-area' id="course-description" type="text" ref={courseDescriptionInput} />
             </div>
-            <div>
-                <label className='form__label' htmlFor="duration-unit">Veckor/Dagar</label>
-                <select className='form__select' name="duration-unit" id="duration-unit" defaultValue='' ref={courseUnitInput} >
-                    <option className='form__option' disabled value=''>Veckor/Dagar</option>
-                    <option className='form__option' value="weeks">Veckor</option>
-                    <option className='form__option' value="days">Dagar</option>
-                </select>
-            </div>
-            <div>
-                <label className='add-course__label' htmlFor="course-description">Beskrivning:</label>
-                <textarea className='add-course__text-area' id="course-description" type="text" ref={courseDescriptionInput} />
-            </div>
-            <Button type={buttonDisabled ? 'disabled' : 'secondary'} disabled={buttonDisabled}>lägg till</Button>
+            <Button type={buttonDisabled ? 'disabled' : 'secondary'} disabled={buttonDisabled}>Lägg till</Button>
         </form>
      );
 }

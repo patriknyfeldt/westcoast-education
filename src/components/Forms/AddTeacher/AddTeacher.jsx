@@ -2,6 +2,8 @@ import '../Forms.scss';
 
 import { useContext, useRef, useState} from 'react';
 
+import { BiCheck } from "react-icons/bi";
+
 import ListContext from '../../../store/list-context';
 
 import Button from '../../ui/Button/Button';
@@ -110,7 +112,6 @@ const AddTeacher = ({closeModal}) => {
         .map(competence => competence.name)
       };
 
-    //   context.addData({body: teacher, type: 'teachers'});
       addTeacher(teacher);
       clearForm();
       closeModal();
@@ -159,9 +160,6 @@ const AddTeacher = ({closeModal}) => {
         }
       }
 
-
-  
-    
     return ( 
         <form className='form' onSubmit={onSubmitHandler} onChange={onChangeHandler}>
             <div className='form__input-wrapper'>
@@ -174,11 +172,11 @@ const AddTeacher = ({closeModal}) => {
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="teacher-personal-id-number">Personnummer:</label>
-                <input id='teacher-personal-id-number' type="date" ref={teacherPersonalIdInput} />
+                <input className='form__date-input' id='teacher-personal-id-number' type="date" ref={teacherPersonalIdInput} />
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="teacher-email-input">Email:</label>
-                <input id="teacher-email-input" type="email" ref={teacherEmailInput} onChange={((e) => validate(e, 'email'))} />
+                <input className='form__text-input' id="teacher-email-input" ref={teacherEmailInput} onChange={((e) => validate(e, 'email'))} />
                 <p className='form__error-msg'>{errorMsgs?.email}</p>
             </div>
             <div className='form__input-wrapper'>
@@ -186,18 +184,24 @@ const AddTeacher = ({closeModal}) => {
                 <input className='form__text-input' id="teacher-phone-number" type="text" ref={teacherPhoneNumberInput} onChange={((e) => validate(e, 'phoneNumber'))} />
                 <p className='form__error-msg'>{errorMsgs?.phoneNumber}</p>
             </div>
-            <div>
-                {}
-            </div>
             <div className='form__competencies-wrapper'>
-                <h4 className='form__competencies-label'>Välj kompetenser:</h4>
+                <h4 className='form__label'>Välj kompetenser:</h4>
                 <ul className='form__list'>
                     {competencies.map((competence, i) => {
                         return (
-                            <li className='for__list-item' key={i}>
-                                <label className='form__label' htmlFor={`checkbox-${i}`}>{competence.name}</label>
+                            <li className='form__list-item' key={i}>
+                                <label 
+                                className={
+                                    `${competencies[i].checked ?
+                                    'form__checkbox-label form__checkbox-label--checked' :
+                                    'form__checkbox-label' 
+                                }`} 
+                                htmlFor={`checkbox-${i}`}>
+                                    {competence.name}
+                                    {competencies[i].checked && <BiCheck />}
+                                </label>
                                 <input
-                                className='for__checkbox' 
+                                className='form__checkbox' 
                                 type="checkbox"
                                 id={`checkbox-${i}`}
                                 name={competence.name}
