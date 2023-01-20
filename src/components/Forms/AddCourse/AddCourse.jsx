@@ -101,26 +101,53 @@ const AddCourse = ({closeModal}) => {
         <form className='form' onSubmit={onSubmitHandler} onChange={onChangeHandler}>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="course-title">Kursens namn:</label>
-                <input className='form__text-input' id="course-title" type="text" ref={courseTitleInput} />
+                <input 
+                className='form__text-input' 
+                id="course-title" 
+                type="text" 
+                ref={courseTitleInput} 
+                />
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="course-number">Kursnummer:</label>
-                <input className='form__text-input' id="course-number" type="text" ref={courseNumberInput} onChange={((e) => {validate(e, 'courseNumber')})} />
+                <input
+                 className='form__text-input' 
+                 id="course-number" type="text" 
+                 ref={courseNumberInput} 
+                 onChange={((e) => {validate(e, 'courseNumber')})} 
+                 />
                 <p className='form__error-msg'>{errorMsgs?.courseNumber}</p>
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="course-date">Kursens startdatum:</label>
-                <input className='form__date-input' id='course-date' type="date" ref={courseStartDateInput} />
+                <input 
+                className='form__date-input' 
+                id='course-date' 
+                type="date" 
+                ref={courseStartDateInput} 
+                />
             </div>
             <div className="form__duration-wrapper">
               <div className='form__input-wrapper'>
                   <label className='form__label' htmlFor="course-duration">Kursens längd:</label>
-                  <input className='form__number-input' id="course-duration" type="text" ref={courseDurationInput} onChange={((e) => {validate(e, 'duration')})}/>
+                  <input 
+                  className='form__number-input' 
+                  id="course-duration" 
+                  type="text" 
+                  ref={courseDurationInput} 
+                  onChange={((e) => {validate(e, 'duration')})}
+                  />
                   <p className='form__error-msg'>{errorMsgs?.duration}</p>
               </div>
               <div className='form__input-wrapper'>
                   <label className='form__label' htmlFor="duration-unit">Veckor/Dagar:</label>
-                  <select className='form__select' name="duration-unit" id="duration-unit" defaultValue='' ref={courseUnitInput} >
+                  <select 
+                  className='form__select' 
+                  name="duration-unit" 
+                  id="duration-unit" 
+                  defaultValue='' 
+                  ref={courseUnitInput} 
+                  >
                       <option className='form__option' disabled value=''>Välj här</option>
                       <option className='form__option' value="weeks">Veckor</option>
                       <option className='form__option' value="days">Dagar</option>
@@ -129,9 +156,17 @@ const AddCourse = ({closeModal}) => {
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="course-description">Beskrivning:</label>
-                <textarea className='form__text-area' id="course-description" type="text" ref={courseDescriptionInput} />
+                <textarea 
+                className='form__text-area' 
+                id="course-description" 
+                type="text" 
+                ref={courseDescriptionInput} />
             </div>
-            <Button type={buttonDisabled ? 'disabled' : 'secondary'} disabled={buttonDisabled}>Lägg till</Button>
+            <Button 
+            type={buttonDisabled ? 'disabled' : 'secondary'} 
+            disabled={buttonDisabled}>
+              Lägg till
+            </Button>
         </form>
      );
 }

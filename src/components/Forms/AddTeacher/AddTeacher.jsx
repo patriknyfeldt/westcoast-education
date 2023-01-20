@@ -164,24 +164,48 @@ const AddTeacher = ({closeModal}) => {
         <form className='form' onSubmit={onSubmitHandler} onChange={onChangeHandler}>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="teacher-first-name">Förnamn:</label>
-                <input className='form__text-input' id="teacher-first-name" type="text" ref={teacherFirstnameInput} />
+                <input 
+                className='form__text-input' 
+                id="teacher-first-name" 
+                type="text" 
+                ref={teacherFirstnameInput} />
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="teacher-last-name">Efternamn:</label>
-                <input className='form__text-input' id="teacher-last-name" type="text" ref={teacherLastnameInput} />
+                <input 
+                className='form__text-input' 
+                id="teacher-last-name" 
+                type="text" 
+                ref={teacherLastnameInput} />
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="teacher-personal-id-number">Personnummer:</label>
-                <input className='form__date-input' id='teacher-personal-id-number' type="date" ref={teacherPersonalIdInput} />
+                <input 
+                className='form__date-input' 
+                id='teacher-personal-id-number' 
+                type="date" 
+                ref={teacherPersonalIdInput} 
+                />
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="teacher-email-input">Email:</label>
-                <input className='form__text-input' id="teacher-email-input" ref={teacherEmailInput} onChange={((e) => validate(e, 'email'))} />
+                <input 
+                className='form__text-input' 
+                id="teacher-email-input" 
+                ref={teacherEmailInput} 
+                onChange={((e) => validate(e, 'email'))} 
+                />
                 <p className='form__error-msg'>{errorMsgs?.email}</p>
             </div>
             <div className='form__input-wrapper'>
                 <label className='form__label' htmlFor="teacher-phone-number">Telefonnummer:</label>
-                <input className='form__text-input' id="teacher-phone-number" type="text" ref={teacherPhoneNumberInput} onChange={((e) => validate(e, 'phoneNumber'))} />
+                <input 
+                className='form__text-input' 
+                id="teacher-phone-number" 
+                type="text" 
+                ref={teacherPhoneNumberInput} 
+                onChange={((e) => validate(e, 'phoneNumber'))} 
+                />
                 <p className='form__error-msg'>{errorMsgs?.phoneNumber}</p>
             </div>
             <div className='form__competencies-wrapper'>
@@ -214,7 +238,10 @@ const AddTeacher = ({closeModal}) => {
                     })}
                 </ul>
             </div>
-            <Button type={buttonDisabled ? 'disabled' : 'secondary'} disabled={buttonDisabled}>lägg till</Button>
+            <Button
+             type={buttonDisabled ? 'disabled' : 'secondary'} 
+             disabled={buttonDisabled}>lägg till
+             </Button>
         </form>
      );
 }
