@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 
 import ListContext from '../../../store/list-context';
 
-import Button from '../../../ui/Button/Button';
+import Button from '../../../components/ui/Button/Button';
 
 const Teacher = () => {
     const { teacherId } = useParams()
@@ -41,7 +41,7 @@ const Teacher = () => {
                     <span className='teacher__text'>{teacher.phoneNumber}</span>
                 </div>
                 <ul className='teacher__competencies-list'>
-                <h2 className='teacher__list-heading'>Kompetenser:</h2>
+                <h2 className='teacher__list-heading'>Kompetensområden:</h2>
                 {teacher.competencies?.map((competence, i) => {
                     return (
                         <li key={i}>

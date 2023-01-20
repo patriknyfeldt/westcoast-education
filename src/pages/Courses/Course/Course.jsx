@@ -5,8 +5,7 @@ import { useParams, Link } from "react-router-dom";
 
 import ListContext from '../../../store/list-context';
 
-import Button from '../../../ui/Button/Button';
-
+import Button from '../../../components/ui/Button/Button';
 const Course = () => {
 
     const { courseId } = useParams()

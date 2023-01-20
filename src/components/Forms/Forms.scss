@@ -1,0 +1,41 @@
+@use '/src/styles/' as *;
+
+.form {
+    @include flex(column, center, center);
+    gap: $default-spacing;
+
+    &__input-wrapper {
+        @include flex(column, center, center);
+        padding: $px4;
+        min-width: 300px;
+        border: 1px solid black;
+    }
+
+    &__label {
+
+    }
+
+    &__text-input {
+        width: 100%;
+    }
+
+    &__number-input {
+
+    }
+
+    &__date-input {
+
+    }
+
+    &__select {
+
+    }
+
+    &__option {
+
+    }
+
+    &__text-area {
+        
+    }
+}

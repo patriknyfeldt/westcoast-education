@@ -1,7 +1,7 @@
 import '../List.scss'
 
 import { Link } from 'react-router-dom';
-import Button from '../../../ui/Button/Button'
+import Button from '../../ui/Button/Button'
 const CoursesList = ({courses}) => {
 
     return (

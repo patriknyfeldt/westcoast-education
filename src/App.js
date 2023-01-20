@@ -9,8 +9,8 @@ import Courses from './pages/Courses/Courses';
 import Teachers from './pages/Teachers/Teachers';
 import Course from './pages/Courses/Course/Course';
 import Teacher from './pages/Teachers/Teacher/Teacher';
-import Header from './layout/Header/Header'
-import Footer from './layout/Footer/Footer';
+import Header from './components/layout/Header/Header';
+import Footer from './components/layout/Footer/Footer';
 
 function App() {
 // const context = useContext(ListContext);

@@ -2,6 +2,7 @@ import './Modal.scss'
 
 import ReactDOM from 'react-dom';
 
+import { IoCloseSharp } from "react-icons/io5";
 
 const Overlay = () => {
   return <div className='overlay'></div>
@@ -12,12 +13,14 @@ const ModalOverlay = ({children, title, onClick}) => {
     <div className='modal'>
         <header className='modal__header'>
           <h4 className='modal__heading'>{title}</h4>
+          <IoCloseSharp className='modal__close-icon' onClick={onClick}/>
         </header>
-        <div className='modal__content'>
-          {children}
-        </div>
+        <main className='modal__main'>
+          <div className='modal__content'>
+            {children}
+          </div>
+        </main>
         <footer className='modal__footer'>
-          <button onClick={onClick}>open/close</button>
         </footer>
     </div>
   );

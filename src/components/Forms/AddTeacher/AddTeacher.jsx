@@ -1,8 +1,11 @@
-import './AddTeacher.scss';
+import '../Forms.scss';
 
 import { useContext, useRef, useState} from 'react';
 
-import ListContext from '../../store/list-context';
+import ListContext from '../../../store/list-context';
+
+import Button from '../../ui/Button/Button';
+
 const AddTeacher = ({closeModal}) => {
     
     const initialCompetencies = [
@@ -38,7 +41,12 @@ const AddTeacher = ({closeModal}) => {
         
     const context = useContext(ListContext);
     const [buttonDisabled, setButtonDisabled] = useState(true);
-    const [competencies, setCompetencies] = useState(initialCompetencies)
+    const [competencies, setCompetencies] = useState(initialCompetencies);
+    const [errorMsgs, setErrorMsgs] = useState({
+        email: null,
+        phoneNumber: null, 
+      })
+  
 
     const teacherFirstnameInput = useRef();
     const teacherLastnameInput = useRef();
@@ -75,7 +83,9 @@ const AddTeacher = ({closeModal}) => {
             teacherLastnameInput.current.value === ''||
             teacherPersonalIdInput.current.value === ''||
             teacherEmailInput.current.value === ''||
+            !teacherEmailInput.current.value.includes('@') ||
             teacherPhoneNumberInput.current.value === ''||
+            !+teacherPhoneNumberInput.current.value ||
             !competencies.find(competence => competence.checked)
           ) {
             setButtonDisabled(true);
@@ -124,45 +134,70 @@ const AddTeacher = ({closeModal}) => {
         console.log(error);
       }
     }
-    
-    const onCancelClickedHandler = (e) => {
-      e.preventDefault();
-      clearForm();
-    };
 
+    const validate = (e, inputField) => {
+        if( inputField === 'phoneNumber'){
+
+            if(!+e.target.value && e.target.value !== ''){
+            setErrorMsgs({...errorMsgs, phoneNumber: 'Måste vara ett nummer'})
+            }
+
+            else {
+                setErrorMsgs({...errorMsgs, phoneNumber: null})
+            }      
+        }
+
+        if(inputField === 'email'){
+
+            if(!e.target.value.includes('@') && e.target.value !== '') {
+                setErrorMsgs({...errorMsgs, email: 'Måste innehålla "@"'})
+            }
+
+            else {
+              setErrorMsgs({...errorMsgs, email: null})
+            }      
+        }
+      }
+
+
+  
+    
     return ( 
-        <form onSubmit={onSubmitHandler} onChange={onChangeHandler}>
-            <div>
-                <label htmlFor="teacher-first-name">Förnamn:</label>
-                <input id="teacher-first-name" type="text" ref={teacherFirstnameInput} />
+        <form className='form' onSubmit={onSubmitHandler} onChange={onChangeHandler}>
+            <div className='form__input-wrapper'>
+                <label className='form__label' htmlFor="teacher-first-name">Förnamn:</label>
+                <input className='form__text-input' id="teacher-first-name" type="text" ref={teacherFirstnameInput} />
             </div>
-            <div>
-                <label htmlFor="teacher-last-name">Efternamn:</label>
-                <input id="teacher-last-name" type="text" ref={teacherLastnameInput} />
+            <div className='form__input-wrapper'>
+                <label className='form__label' htmlFor="teacher-last-name">Efternamn:</label>
+                <input className='form__text-input' id="teacher-last-name" type="text" ref={teacherLastnameInput} />
             </div>
-            <div>
-                <label htmlFor="teacher-personal-id-number">Personnummer:</label>
+            <div className='form__input-wrapper'>
+                <label className='form__label' htmlFor="teacher-personal-id-number">Personnummer:</label>
                 <input id='teacher-personal-id-number' type="date" ref={teacherPersonalIdInput} />
             </div>
-            <div>
-                <label htmlFor="teacher-email-input">Email:</label>
-                <input id="teacher-email-input" type="email" ref={teacherEmailInput} />
+            <div className='form__input-wrapper'>
+                <label className='form__label' htmlFor="teacher-email-input">Email:</label>
+                <input id="teacher-email-input" type="email" ref={teacherEmailInput} onChange={((e) => validate(e, 'email'))} />
+                <p className='form__error-msg'>{errorMsgs?.email}</p>
             </div>
-            <div>
-                <label htmlFor="teacher-phone-number">Telefonnummer:</label>
-                <input id="teacher-phone-number" type="tel" pattern='[0-9-+]+' ref={teacherPhoneNumberInput} />
+            <div className='form__input-wrapper'>
+                <label className='form__label' htmlFor="teacher-phone-number">Telefonnummer:</label>
+                <input className='form__text-input' id="teacher-phone-number" type="text" ref={teacherPhoneNumberInput} onChange={((e) => validate(e, 'phoneNumber'))} />
+                <p className='form__error-msg'>{errorMsgs?.phoneNumber}</p>
             </div>
             <div>
                 {}
             </div>
-            <div>
-                <h4>Välj kompetenser:</h4>
-                <ul>
+            <div className='form__competencies-wrapper'>
+                <h4 className='form__competencies-label'>Välj kompetenser:</h4>
+                <ul className='form__list'>
                     {competencies.map((competence, i) => {
                         return (
-                            <li key={i}>
-                                <label htmlFor={`checkbox-${i}`}>{competence.name}</label>
-                                <input 
+                            <li className='for__list-item' key={i}>
+                                <label className='form__label' htmlFor={`checkbox-${i}`}>{competence.name}</label>
+                                <input
+                                className='for__checkbox' 
                                 type="checkbox"
                                 id={`checkbox-${i}`}
                                 name={competence.name}
@@ -175,8 +210,7 @@ const AddTeacher = ({closeModal}) => {
                     })}
                 </ul>
             </div>
-            <button type='submit' disabled={buttonDisabled}>Lägg till</button>
-            <button onClick={onCancelClickedHandler}>avbryt</button>
+            <Button type={buttonDisabled ? 'disabled' : 'secondary'} disabled={buttonDisabled}>lägg till</Button>
         </form>
      );
 }

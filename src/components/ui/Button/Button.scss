@@ -11,7 +11,7 @@
         @include button(secondary);
     }
 
-    &--tertiary {
-        @include button(tertiary);
+    &--disabled {
+        @include button(disabled);
     }
 }
